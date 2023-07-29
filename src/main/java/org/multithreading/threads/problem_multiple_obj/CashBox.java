@@ -8,4 +8,11 @@ public class CashBox {
     CashBox(){
         this.id = generator++;
     }
+
+    @Override
+    public String toString() {
+        return "CashBox{" +
+                "id=" + id +
+                '}';
+    }
 }

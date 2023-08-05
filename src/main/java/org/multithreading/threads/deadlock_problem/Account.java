@@ -1,29 +1,36 @@
 package org.multithreading.threads.deadlock_problem;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Account {
 
     private static int generator = 1;
     private int id;
+    private volatile int money;
 
-    private long money;
+    // solving deadLock
+    private final Lock lock = new ReentrantLock();
 
-    public Account(long money){
+    public Account(int money) {
         this.money = money;
         this.id = generator++;
     }
 
+    public Lock getLock() {
+        return lock;
+    }
 
-    public void add(long money){
+    public void add(int money) {
         this.money += money;
     }
 
-    public boolean takeOff(long money){
-        if (this.money >= money){
+    public boolean takeOff(int money) {
+        if (this.money >= money) {
             this.money -= money;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     @Override

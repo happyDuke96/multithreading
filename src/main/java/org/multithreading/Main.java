@@ -8,7 +8,6 @@ public class Main {
         List<Demo> list = new ArrayList<>();
         list.add(new Demo());
         print(list);
-        System.out.println("zzzz");
     }
 
     public static void print(List<? extends Public> list){
